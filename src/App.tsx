@@ -115,6 +115,7 @@ export const App = () => {
   const [thxShow, setThx] = useState(LS.getItem(LSKeys.ShowThx, false));
   const [selectedProducts, setSelectedProducts] = useState<Product[]>([]);
   const [optionsCount, setOptionsCount] = useState(5);
+  const isFiveOptionsSelected = optionsCount > 0 && optionsCount <= 5;
 
   const clickSubmit = () => {
     // window.gtag("event", "connect_click", {
@@ -199,13 +200,25 @@ export const App = () => {
 
         <Gap size={8} />
 
-        {optionsCount > 0 && optionsCount <= 5 && (
+        {
           <Plate
-            view="attention"
-            title={`Выбери ${optionsCount} ${optionText(optionsCount)}`}
-            leftAddons={<StatusBadge view="attention-alert" />}
+            view={isFiveOptionsSelected ? "attention" : "positive"}
+            title={
+              isFiveOptionsSelected
+                ? `Выбери ${optionsCount} ${optionText(optionsCount)}`
+                : "Все 5 опций выбраны"
+            }
+            leftAddons={
+              <StatusBadge
+                view={
+                  isFiveOptionsSelected
+                    ? "attention-alert"
+                    : "positive-checkmark"
+                }
+              />
+            }
           />
-        )}
+        }
 
         <div className={appSt.products}>
           {categories.map((category) => (
