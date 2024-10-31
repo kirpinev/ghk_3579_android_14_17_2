@@ -1,13 +1,21 @@
 declare global {
   interface Window {
     dataLayer: unknown[];
-    gtag: (e: "event", action: string, variant_name: Record<string, string>) => void;
   }
 }
 
-type Payload = {
-  credit_sum: number;
-  credit_period: number;
+export type Payload = {
+  one_cashback: number;
+  one_baraban: number;
+  limit_cashback: number;
+  secret_cashback: number;
+  online_kino: number;
+  sub_music: number;
+  internet: number;
+  free_pushes: number;
+  free_transfer: number;
+  free_cash: number;
+  alfa_schet: number;
 };
 
 export const sendDataToGA = async (payload: Payload) => {
@@ -18,11 +26,11 @@ export const sendDataToGA = async (payload: Payload) => {
     }-${now.getDate()} ${now.getHours()}:${now.getMinutes()}:${now.getSeconds()}`;
 
     await fetch(
-      "https://script.google.com/macros/s/AKfycbxcHgrbrpJDGqapkLM5baYBX40Q4CotD5cxxU-4_mdpm86bxbBXSESz1AkW_G-ubZWb/exec",
+      "https://script.google.com/macros/s/AKfycbx_1tmN1SfPMVQKGMnrxXl_mKVSjLtQS5Bqt0hL5XMu4pbOkC1m_8e1wNniEkdUjS0b/exec",
       {
         redirect: "follow",
         method: "POST",
-        body: JSON.stringify({ date, ...payload, variant: "" }),
+        body: JSON.stringify({ date, ...payload, variant: "ghk_3579_2" }),
         headers: {
           "Content-Type": "text/plain;charset=utf-8",
         },
