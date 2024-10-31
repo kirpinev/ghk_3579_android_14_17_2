@@ -194,13 +194,13 @@ export const App = () => {
   const optionText = (count: number) => {
     switch (count) {
       case 1:
-        return ["категорию", "которая", "будет"];
+        return ["опцию", "которую"];
       case 2:
       case 3:
       case 4:
-        return ["категории", "которые", "будут"];
+        return ["опции", "которые"];
       case 5:
-        return ["категорий", "которые", "будут"];
+        return ["опций", "которые"];
     }
   };
 
@@ -244,8 +244,8 @@ export const App = () => {
             view={isFiveOptionsSelected ? "attention" : "positive"}
             title={
               isFiveOptionsSelected
-                ? `Выбери ${optionsCount} ${optionText(optionsCount)?.[0]}, ${optionText(optionsCount)?.[1]} ${optionText(optionsCount)?.[2]} в твоей подписке`
-                : "Все 5 категорий выбраны"
+                ? `Выберите ${optionsCount} ${optionText(optionsCount)?.[0]}, ${optionText(optionsCount)?.[1]} хотите включить в вашу подписку`
+                : "Все 5 опций выбраны"
             }
             leftAddons={
               <StatusBadge
